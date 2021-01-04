@@ -135,29 +135,6 @@ For more information on rate-limiting, see
 
 |]
 
--- Some environment variables may have different meanings (see for instance
--- https://github.com/nmattia/niv/issues/280)
--- For ambiguous ones, we prepend NIV_.
---
-warnGitHubEnvVars :: IO ()
-warnGitHubEnvVars =
-  mapM_
-    warnEnvVar
-    [ "GITHUB_INSECURE",
-      "GITHUB_PATH"
-    ]
-  where
-    warnEnvVar vn = lookupEnv (T.unpack vn) >>= \case
-      Nothing -> pure ()
-      Just {} -> do
-        twarn $
-          T.unwords
-            [ "The environment variable",
-              vn,
-              "was renamed to",
-              "NIV_" <> vn
-            ]
-
 -- | Like lookupEnv "foo" but also looks up "NIV_foo"
 lookupEnv' :: String -> IO (Maybe String)
 lookupEnv' vn = lookupEnv vn >>= \case

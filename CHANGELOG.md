@@ -7,6 +7,7 @@
 * If `-T` is provided on the command line for `niv add` it will be respected and no guessing from the url is done.
 * `type` attribute is now respected.
 * If an url template is updated, `type` needs to be adjusted manuall as it is not guessed from the new url template.
+* Remove warnings about GITHUB_INSECURE and GITHUB_PATH
 
 ## [0.2.17] 2020-09-08
 ## Added
